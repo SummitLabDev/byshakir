@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+
+// Helper to get clean slug from filename
+const getSlug = (id: string) => id.replace(/\.md$/, '');
+
+const { projects } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+  {projects.map((project) => (
+    <ProjectCard
+      slug={getSlug(project.id)}
+      title={project.data.title}
+      location={project.data.location}
+      country={project.data.country}
+      image={project.data.heroImage}
+    />
+  ))}
+</div>

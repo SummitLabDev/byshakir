@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  slug: string;
+  title: string;
+  location: string;
+  country: string;
+  image: ImageMetadata;
+  eager?: boolean;
+}
+
+const { slug, title, location, country, image, eager = false } = Astro.props;
+---
+
+<a
+  href={`/projects/${slug}`}
+  class="group relative block overflow-hidden aspect-[4/5]"
+>
+  <!-- Image -->
+  <Image
+    src={image}
+    alt={`${title} - ${location}, ${country}`}
+    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+    widths={[400, 600, 800]}
+    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+    loading={eager ? "eager" : "lazy"}
+  />
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500"></div>
+
+  <!-- Content -->
+  <div class="absolute inset-0 flex flex-col justify-end p-6 lg:p-8">
+    <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+      <h3 class="font-serif text-heading-3 lg:text-heading-2 text-cream mb-2">
+        {title}
+      </h3>
+      <p class="text-cream/70 text-sm tracking-wider uppercase">
+        {location}, {country}
+      </p>
+    </div>
+
+    <!-- View Project indicator -->
+    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+      <span class="text-gold text-sm tracking-wider uppercase flex items-center gap-2">
+        View Project
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </span>
+    </div>
+  </div>
+</a>

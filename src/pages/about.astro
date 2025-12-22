@@ -1,0 +1,145 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import SectionHeading from '../components/common/SectionHeading.astro';
+import Button from '../components/common/Button.astro';
+import shakirPortrait from '../assets/images/shakir-portrait.jpeg';
+import designProcess from '../assets/images/3d-design-process.png';
+---
+
+<Layout
+  title="About"
+  description="Learn about By Shakir, a luxury interior design studio with 15+ years of experience creating bespoke interiors and custom furniture for discerning clients worldwide."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-black">
+    <div class="container-luxury">
+      <SectionHeading
+        subtitle="Our Story"
+        title="About By Shakir"
+      />
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="pb-24 lg:pb-32 bg-black">
+    <div class="container-luxury">
+      <div class="max-w-4xl mx-auto">
+        <!-- Philosophy Quote -->
+        <blockquote class="text-center mb-16 lg:mb-24">
+          <p class="font-serif text-2xl lg:text-3xl text-cream/90 italic leading-relaxed">
+            "Your work is going to be a big part of your life, and the only way to be truly satisfied is to do what you believe."
+          </p>
+          <footer class="mt-6 text-gold">— Shakir, Founder</footer>
+        </blockquote>
+
+        <!-- Founder Section with Portrait -->
+        <div class="mb-16 lg:mb-24">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div>
+              <Image
+                src={shakirPortrait}
+                alt="Shakir - Founder of By Shakir Luxury Interiors"
+                class="w-full h-auto rounded-sm"
+                widths={[400, 600, 800]}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                loading="eager"
+              />
+            </div>
+            <div>
+              <h2 class="font-serif text-heading-2 text-cream mb-6">Meet Shakir</h2>
+              <p class="text-cream/80 text-lg leading-relaxed mb-4">
+                For over 15 years, Shakir has been one of the top Dutch designers, creating complete
+                custom-made living furnishings for clients from the higher segment.
+              </p>
+              <p class="text-cream/80 text-lg leading-relaxed">
+                What started as a passion for transforming spaces has evolved into a luxury lifestyle
+                brand known as <span class="text-gold">Metropolitan Luxury</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="space-y-12 text-cream/80 text-lg leading-relaxed">
+          <div>
+            <h2 class="font-serif text-heading-2 text-cream mb-6">Our Approach</h2>
+            <p class="mb-4">
+              The Metropolitan Luxury style is characterized by a personalized, detail-oriented approach.
+              We create custom 3D drawings and sketches for every project, providing comprehensive
+              coordination of furniture, flooring, walls, and accessories.
+            </p>
+            <p>
+              Through our extensive supplier network, we source only high-quality, exclusive textiles.
+              Our expert consultation on color schemes and material selection ensures that every
+              element works in perfect harmony.
+            </p>
+          </div>
+
+          <!-- 3D Design Process Showcase -->
+          <div class="my-12">
+            <Image
+              src={designProcess}
+              alt="3D Design Process at By Shakir"
+              class="w-full h-auto rounded-sm"
+              widths={[600, 900, 1200]}
+              sizes="100vw"
+            />
+            <p class="text-center text-cream/60 text-sm mt-4 italic">
+              Every project begins with detailed 3D visualizations to bring your vision to life
+            </p>
+          </div>
+
+          <div>
+            <h2 class="font-serif text-heading-2 text-cream mb-6">International Reach</h2>
+            <p>
+              While rooted in Dutch design excellence, By Shakir has grown to serve discerning clients
+              across the Netherlands, Belgium, Spain, and the United Arab Emirates. Each project,
+              whether a beachfront villa in Malaga or a penthouse in Dubai Marina, receives the same
+              meticulous attention to detail.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="font-serif text-heading-2 text-cream mb-6">The Process</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mt-8">
+              {[
+                { step: '01', title: 'Intake', desc: 'Understanding your vision and requirements' },
+                { step: '02', title: 'Quotation', desc: 'Transparent cost estimates' },
+                { step: '03', title: '3D Design', desc: 'Visualizing concepts before production' },
+                { step: '04', title: 'Presentation', desc: 'Remote and in-studio design reviews' },
+                { step: '05', title: 'Execution', desc: 'Bringing your vision to life' },
+              ].map((item) => (
+                <div class="text-center p-6 border border-gold/20 hover:border-gold/40 transition-colors">
+                  <p class="text-gold font-serif text-2xl mb-2">{item.step}</p>
+                  <p class="text-cream font-medium mb-2">{item.title}</p>
+                  <p class="text-cream/60 text-sm">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h2 class="font-serif text-heading-2 text-cream mb-6">Beyond Interiors</h2>
+            <p>
+              Beyond interior styling, By Shakir has developed proprietary product lines including
+              decorative cushions, exclusive furniture pieces, custom fabrics, home accessories,
+              and even fragrance collections—all designed to bring the Metropolitan Luxury experience
+              into every aspect of your home.
+            </p>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-16 lg:mt-24 text-center">
+          <p class="text-cream/70 text-lg mb-6">
+            Ready to start your journey to extraordinary living?
+          </p>
+          <Button href="/contact" variant="primary" size="lg">
+            Get in Touch
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

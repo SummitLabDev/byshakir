@@ -1,0 +1,31 @@
+---
+interface Props {
+  name: string;
+  address: string[];
+  note?: string;
+  comingSoon?: boolean;
+}
+
+const { name, address, note, comingSoon = false } = Astro.props;
+---
+
+<div class="p-6 lg:p-8 bg-charcoal border border-gold/10">
+  <div class="flex items-start justify-between mb-4">
+    <h3 class="font-serif text-xl text-cream">{name}</h3>
+    {comingSoon && (
+      <span class="text-xs uppercase tracking-wider text-gold bg-gold/10 px-2 py-1">
+        Coming Soon
+      </span>
+    )}
+  </div>
+
+  <address class="not-italic text-cream/70 space-y-1">
+    {address.map((line) => (
+      <p>{line}</p>
+    ))}
+  </address>
+
+  {note && (
+    <p class="mt-4 text-sm text-taupe italic">{note}</p>
+  )}
+</div>

@@ -1,0 +1,72 @@
+---
+import SectionHeading from '../common/SectionHeading.astro';
+
+const services = [
+  {
+    title: 'Complete Interior Design',
+    description: 'From concept to completion, we transform spaces into extraordinary living environments tailored to your lifestyle.',
+    icon: 'home',
+  },
+  {
+    title: 'Custom Furniture',
+    description: 'Bespoke pieces crafted with the finest materials and fabrics, made exclusively for you and your space.',
+    icon: 'chair',
+  },
+  {
+    title: 'International Projects',
+    description: 'We bring Dutch design excellence to prestigious projects across Netherlands, Belgium, Spain, and the UAE.',
+    icon: 'globe',
+  },
+  {
+    title: 'Private & Commercial',
+    description: 'Whether it\'s a private residence or commercial space, we deliver luxury without compromise.',
+    icon: 'building',
+  },
+];
+---
+
+<section class="py-24 lg:py-32 bg-charcoal">
+  <div class="container-luxury">
+    <SectionHeading
+      subtitle="What We Do"
+      title="Our Services"
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      {services.map((service) => (
+        <div class="group p-8 lg:p-10 bg-black/50 border border-gold/10 hover:border-gold/30 transition-all duration-500">
+          <div class="w-12 h-12 mb-6 flex items-center justify-center text-gold">
+            {service.icon === 'home' && (
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+            )}
+            {service.icon === 'chair' && (
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1v-2zM6 20h4M14 20h4M8 16v4M16 16v4" />
+              </svg>
+            )}
+            {service.icon === 'globe' && (
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            )}
+            {service.icon === 'building' && (
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            )}
+          </div>
+
+          <h3 class="font-serif text-heading-3 text-cream mb-4 group-hover:text-gold transition-colors duration-300">
+            {service.title}
+          </h3>
+
+          <p class="text-cream/60 leading-relaxed">
+            {service.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

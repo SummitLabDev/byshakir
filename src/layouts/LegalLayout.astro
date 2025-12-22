@@ -1,0 +1,66 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <section class="pt-32 pb-24 lg:pt-40 lg:pb-32 bg-black min-h-screen">
+    <div class="container-luxury">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="font-serif text-heading-1 text-cream mb-8 text-center">{title}</h1>
+        <div class="gold-line mb-12"></div>
+
+        <div class="prose prose-invert prose-gold max-w-none">
+          <slot />
+        </div>
+
+        <div class="mt-16 pt-8 border-t border-gold/20">
+          <p class="text-taupe text-sm text-center">
+            Laatste update: December 2024
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .prose-gold {
+    --tw-prose-body: theme('colors.cream' / 80%);
+    --tw-prose-headings: theme('colors.cream');
+    --tw-prose-lead: theme('colors.cream' / 70%);
+    --tw-prose-links: theme('colors.gold.DEFAULT');
+    --tw-prose-bold: theme('colors.cream');
+    --tw-prose-counters: theme('colors.gold.DEFAULT');
+    --tw-prose-bullets: theme('colors.gold.DEFAULT');
+    --tw-prose-hr: theme('colors.gold.DEFAULT' / 20%);
+    --tw-prose-quotes: theme('colors.cream');
+    --tw-prose-quote-borders: theme('colors.gold.DEFAULT');
+  }
+
+  .prose h2 {
+    @apply font-serif text-heading-3 text-cream mt-10 mb-4;
+  }
+
+  .prose h3 {
+    @apply font-serif text-xl text-cream mt-8 mb-3;
+  }
+
+  .prose p {
+    @apply text-cream/80 leading-relaxed mb-4;
+  }
+
+  .prose ul {
+    @apply list-disc list-inside space-y-2 text-cream/80;
+  }
+
+  .prose a {
+    @apply text-gold hover:text-gold-light underline transition-colors;
+  }
+</style>

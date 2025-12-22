@@ -1,0 +1,61 @@
+---
+import Button from '../common/Button.astro';
+---
+
+<section class="relative h-screen w-full overflow-hidden">
+  <!-- Video Background -->
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    class="absolute inset-0 h-full w-full object-cover"
+  >
+    <source src="/videos/BYSHAKIR-Picwand.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70"></div>
+
+  <!-- Content -->
+  <div class="relative h-full flex flex-col items-center justify-center text-center px-6">
+    <div class="animate-fade-in-up">
+      <!-- Logo -->
+      <img
+        src="/images/logo.svg"
+        alt="By Shakir"
+        class="h-16 lg:h-20 w-auto mx-auto mb-8"
+      />
+
+      <!-- Tagline -->
+      <p class="font-serif text-xl lg:text-2xl text-cream/90 mb-10 max-w-xl mx-auto">
+        Where Luxury, Comfort and Design Come Together
+      </p>
+
+      <!-- CTA -->
+      <Button href="/projects" variant="primary" size="lg">
+        Explore Our Work
+      </Button>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <div class="flex flex-col items-center gap-2 text-cream/60">
+      <span class="text-xs tracking-widest uppercase">Scroll</span>
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+        />
+      </svg>
+    </div>
+  </div>
+</section>

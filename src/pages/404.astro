@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/common/Button.astro';
+---
+
+<Layout
+  title="Page Not Found"
+  description="The page you're looking for could not be found."
+  noIndex={true}
+>
+  <section class="min-h-screen flex items-center justify-center bg-black py-24">
+    <div class="container-luxury text-center">
+      <p class="text-gold text-sm tracking-widest uppercase mb-4">Error 404</p>
+
+      <h1 class="font-serif text-display text-cream mb-6">Page Not Found</h1>
+
+      <div class="w-16 h-px bg-gold mx-auto mb-8"></div>
+
+      <p class="text-xl text-cream/70 max-w-md mx-auto mb-12">
+        The page you're looking for seems to have wandered off.
+        Let us help you find your way back.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button href="/" variant="primary" size="lg">
+          Back to Home
+        </Button>
+        <Button href="/projects" variant="outline" size="lg">
+          View Projects
+        </Button>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SectionHeading from '../../components/common/SectionHeading.astro';
+import ProjectGrid from '../../components/projects/ProjectGrid.astro';
+
+// Get all projects sorted by order
+const projects = await getCollection('projects');
+const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title="Projects"
+  description="Explore our portfolio of luxury interior design projects across Netherlands, Belgium, Spain, and the UAE. Each project showcases bespoke furniture and exceptional craftsmanship."
+>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-black">
+    <div class="container-luxury">
+      <SectionHeading
+        subtitle="Our Portfolio"
+        title="Exclusive International Projects"
+      />
+
+      <p class="max-w-2xl mx-auto text-center text-cream/70 -mt-8">
+        It is not only important for us to look at the architecture of the building,
+        but also the location. The combination of architecture, location, and function
+        are key ingredients in our work.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="pb-24 lg:pb-32 bg-black">
+    <div class="container-luxury">
+      <ProjectGrid projects={sortedProjects} />
+    </div>
+  </section>
+</Layout>

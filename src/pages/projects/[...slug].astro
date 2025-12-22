@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Layout from '../../layouts/Layout.astro';
+import ProjectGallery from '../../components/projects/ProjectGallery.astro';
+import ProjectNavigation from '../../components/projects/ProjectNavigation.astro';
+import Button from '../../components/common/Button.astro';
+
+export async function getStaticPaths() {
+  // Helper to get clean slug from filename
+  const getSlug = (id: string) => id.replace(/\.md$/, '');
+
+  const projects = await getCollection('projects');
+  const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
+
+  return sortedProjects.map((project, index) => ({
+    params: { slug: getSlug(project.id) },
+    props: {
+      project,
+      prevProject: sortedProjects[index - 1] ? { slug: getSlug(sortedProjects[index - 1].id), ...sortedProjects[index - 1].data } : undefined,
+      nextProject: sortedProjects[index + 1] ? { slug: getSlug(sortedProjects[index + 1].id), ...sortedProjects[index + 1].data } : undefined,
+    },
+  }));
+}
+
+const { project, prevProject, nextProject } = Astro.props;
+const { Content } = await project.render();
+---
+
+<Layout
+  title={`${project.data.title} - ${project.data.location}`}
+  description={project.data.description || `Explore our ${project.data.title} project in ${project.data.location}, ${project.data.country}. Luxury interior design by By Shakir.`}
+>
+  <!-- Hero Image -->
+  <section class="relative h-[60vh] lg:h-[70vh] overflow-hidden">
+    <Image
+      src={project.data.heroImage}
+      alt={`${project.data.title} - ${project.data.location}, ${project.data.country}`}
+      class="w-full h-full object-cover"
+      widths={[800, 1200, 1600, 2000]}
+      sizes="100vw"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+
+    <!-- Project Title Overlay -->
+    <div class="absolute bottom-0 left-0 right-0 p-8 lg:p-16">
+      <div class="container-luxury">
+        <p class="text-gold text-sm tracking-widest uppercase mb-3">
+          {project.data.location}, {project.data.country}
+        </p>
+        <h1 class="font-serif text-heading-1 lg:text-display text-cream">
+          {project.data.title}
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Content -->
+  <section class="py-16 lg:py-24 bg-black">
+    <div class="container-luxury">
+      <!-- Description -->
+      {project.data.description && (
+        <div class="max-w-3xl mx-auto mb-16 lg:mb-24">
+          <p class="text-lg lg:text-xl text-cream/80 leading-relaxed text-center">
+            {project.data.description}
+          </p>
+        </div>
+      )}
+
+      <!-- Markdown Content -->
+      <div class="max-w-3xl mx-auto mb-16 lg:mb-24 prose prose-invert prose-gold">
+        <Content />
+      </div>
+
+      <!-- Gallery -->
+      <div class="mb-16 lg:mb-24">
+        <h2 class="font-serif text-heading-2 text-cream text-center mb-8">
+          Project Gallery
+        </h2>
+        <ProjectGallery
+          images={project.data.gallery}
+          heroImage={project.data.heroImage}
+          projectTitle={project.data.title}
+        />
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mb-16">
+        <p class="text-cream/70 mb-6">
+          Interested in creating something similar?
+        </p>
+        <Button href="/contact" variant="primary" size="lg">
+          Start Your Project
+        </Button>
+      </div>
+
+      <!-- Navigation -->
+      <ProjectNavigation
+        prevProject={prevProject ? { slug: prevProject.slug, title: prevProject.title } : undefined}
+        nextProject={nextProject ? { slug: nextProject.slug, title: nextProject.title } : undefined}
+      />
+    </div>
+  </section>
+</Layout>
+
+<style is:global>
+  .prose-gold {
+    --tw-prose-body: theme('colors.cream' / 80%);
+    --tw-prose-headings: theme('colors.cream');
+    --tw-prose-lead: theme('colors.cream' / 70%);
+    --tw-prose-links: theme('colors.gold.DEFAULT');
+    --tw-prose-bold: theme('colors.cream');
+    --tw-prose-counters: theme('colors.gold.DEFAULT');
+    --tw-prose-bullets: theme('colors.gold.DEFAULT');
+    --tw-prose-hr: theme('colors.gold.DEFAULT' / 20%);
+    --tw-prose-quotes: theme('colors.cream');
+    --tw-prose-quote-borders: theme('colors.gold.DEFAULT');
+  }
+</style>

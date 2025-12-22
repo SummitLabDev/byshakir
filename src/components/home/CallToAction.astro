@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../common/Button.astro';
+import livingRoomShowcase from '../../assets/images/living-room-showcase.jpeg';
+---
+
+<section class="relative py-32 lg:py-40 overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <Image
+      src={livingRoomShowcase}
+      alt="Luxury Living Room by By Shakir"
+      class="w-full h-full object-cover"
+      widths={[1200, 1600, 2000]}
+      sizes="100vw"
+    />
+  </div>
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/85"></div>
+
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent"></div>
+
+  <!-- Content -->
+  <div class="relative container-luxury text-center">
+    <h2 class="font-serif text-heading-1 lg:text-display text-cream mb-6">
+      Ready to Transform Your Space?
+    </h2>
+
+    <p class="text-xl text-cream/70 max-w-2xl mx-auto mb-10">
+      Let's create something extraordinary together. From initial consultation
+      to final execution, we're with you every step of the way.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <Button href="/contact" variant="primary" size="lg">
+        Get in Touch
+      </Button>
+      <Button href="/projects" variant="outline" size="lg">
+        View Our Work
+      </Button>
+    </div>
+  </div>
+</section>

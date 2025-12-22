@@ -1,0 +1,79 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/images/og-default.jpg',
+  type = 'website',
+  noIndex = false,
+} = Astro.props;
+
+const siteUrl = 'https://byshakir.nl';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const fullTitle = title === 'Home' ? 'By Shakir | Luxury Custom Interiors | Netherlands & International' : `${title} | By Shakir Luxury Interiors`;
+const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).href;
+---
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+{noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:site_name" content="By Shakir Luxury Interiors" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "By Shakir Luxury Interiors",
+  "description": "Bespoke luxury interiors and custom furniture for discerning private and commercial clients worldwide.",
+  "url": siteUrl,
+  "logo": `${siteUrl}/images/logo.svg`,
+  "image": imageUrl,
+  "telephone": "+31344655473",
+  "email": "info@byshakir.nl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Gijsbert Stoutweg 8",
+    "addressLocality": "Tiel",
+    "postalCode": "4005 LE",
+    "addressCountry": "NL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "51.8867",
+    "longitude": "5.4319"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "priceRange": "$$$",
+  "areaServed": ["Netherlands", "Belgium", "Spain", "United Arab Emirates"]
+})} />

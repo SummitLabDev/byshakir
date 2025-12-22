@@ -1,0 +1,66 @@
+---
+interface ProjectLink {
+  slug: string;
+  title: string;
+}
+
+interface Props {
+  prevProject?: ProjectLink;
+  nextProject?: ProjectLink;
+}
+
+const { prevProject, nextProject } = Astro.props;
+---
+
+<nav class="flex items-center justify-between py-8 border-t border-gold/20">
+  {prevProject ? (
+    <a
+      href={`/projects/${prevProject.slug}`}
+      class="group flex items-center gap-3 text-cream/70 hover:text-gold transition-colors"
+    >
+      <svg
+        class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      <div class="text-left">
+        <p class="text-xs uppercase tracking-wider text-taupe">Previous</p>
+        <p class="font-serif text-lg">{prevProject.title}</p>
+      </div>
+    </a>
+  ) : (
+    <div></div>
+  )}
+
+  <a
+    href="/projects"
+    class="text-gold hover:text-gold-light transition-colors text-sm tracking-wider uppercase"
+  >
+    All Projects
+  </a>
+
+  {nextProject ? (
+    <a
+      href={`/projects/${nextProject.slug}`}
+      class="group flex items-center gap-3 text-cream/70 hover:text-gold transition-colors"
+    >
+      <div class="text-right">
+        <p class="text-xs uppercase tracking-wider text-taupe">Next</p>
+        <p class="font-serif text-lg">{nextProject.title}</p>
+      </div>
+      <svg
+        class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  ) : (
+    <div></div>
+  )}
+</nav>
