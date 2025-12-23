@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname;
 
 <header
   id="header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-[80] transition-all duration-300"
 >
   <div class="container-luxury">
     <nav class="flex items-center justify-between h-20 lg:h-24">
@@ -53,7 +53,7 @@ const currentPath = Astro.url.pathname;
         <!-- Mobile Menu Toggle -->
         <button
           id="mobile-menu-toggle"
-          class="lg:hidden relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+          class="lg:hidden relative z-[90] w-10 h-10 flex flex-col items-center justify-center gap-1.5"
           aria-label="Toggle menu"
           aria-expanded="false"
         >
@@ -64,32 +64,32 @@ const currentPath = Astro.url.pathname;
       </div>
     </nav>
   </div>
+</header>
 
-  <!-- Mobile Menu -->
-  <div
-    id="mobile-menu"
-    class="fixed inset-0 bg-black/98 backdrop-blur-sm lg:hidden translate-x-full transition-transform duration-300 ease-out"
-  >
-    <div class="flex flex-col items-center justify-center min-h-screen gap-8 p-8">
-      {navItems.map((item) => (
-        <a
-          href={item.href}
-          class:list={[
-            'text-2xl font-serif tracking-wider transition-colors duration-300',
-            currentPath === item.href ? 'text-gold' : 'text-cream hover:text-gold'
-          ]}
-        >
-          {item.label}
-        </a>
-      ))}
-      <div class="mt-8">
-        <Button href="/contact" variant="primary" size="md">
-          Get in Touch
-        </Button>
-      </div>
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[70] lg:hidden translate-x-full transition-transform duration-300 ease-out bg-black/65 mobile-menu-overlay"
+>
+  <div class="flex flex-col items-center justify-center min-h-screen gap-8 p-8">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class:list={[
+          'text-2xl font-serif tracking-wider transition-colors duration-300',
+          currentPath === item.href ? 'text-gold' : 'text-cream hover:text-gold'
+        ]}
+      >
+        {item.label}
+      </a>
+    ))}
+    <div class="mt-8">
+      <Button href="/contact" variant="primary" size="md">
+        Get in Touch
+      </Button>
     </div>
   </div>
-</header>
+</div>
 
 <script>
   const header = document.getElementById('header');
