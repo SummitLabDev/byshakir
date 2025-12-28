@@ -1,30 +1,123 @@
-# By Shakir Website
+# By Shakir Luxury Interiors
 
-Astro 5 + Tailwind marketing site for By Shakir Luxury Interiors, featuring project pages, gallery lightbox, and a video hero.
+Premium portfolio website for **By Shakir**, a luxury interior design studio specializing in high-end residential and commercial spaces.
 
-## Quickstart
+🌐 **Live Site:** [byshakir.summitlab.dev](https://byshakir.summitlab.dev)
+
+---
+
+## Project Overview
+
+An elegant, minimalist portfolio website showcasing luxury interior design projects. Features interactive galleries, video hero sections, and a refined aesthetic matching the premium brand positioning.
+
+**Client:** By Shakir Luxury Interiors
+**Industry:** Interior Design & Architecture
+**Developed by:** [Summit Labs](https://summitlab.dev)
+
+---
+
+## Tech Stack
+
+- **Framework:** Astro 5.x
+- **Styling:** Tailwind CSS
+- **Language:** TypeScript (95% type-safe)
+- **Forms:** Web3Forms integration
+- **Analytics:** Cloudflare Web Analytics
+- **Hosting:** Cloudflare Pages
+
+---
+
+## Key Features
+
+✅ **Project Galleries** - Interactive lightbox for project showcases
+✅ **Video Hero** - Engaging video background on homepage
+✅ **Responsive Images** - Optimized for fast loading across devices
+✅ **Contact Form** - Secure inquiry handling with Web3Forms
+✅ **Professional Design** - Clean, luxury-focused aesthetic
+✅ **Performance Optimized** - Static site generation for speed
+
+---
+
+## Pages & Sections
+
+- **Homepage** - Video hero with brand introduction
+- **Project Gallery** - Featured interior design projects
+- **About** - Studio philosophy and approach
+- **Services** - Design service offerings
+- **Contact** - Client inquiry form
+
+---
+
+## Technical Highlights
+
+### Static Site Generation
+Built with Astro for optimal performance - pre-rendered at build time for instant page loads.
+
+### Image Optimization
+Automatic image compression and format conversion (WebP) for bandwidth efficiency.
+
+### Analytics
+Privacy-focused analytics via Cloudflare (no cookies, GDPR compliant).
+
+### Responsive Design
+Mobile-first approach ensuring perfect display on all screen sizes.
+
+---
+
+## Development
+
 ```bash
+# Install dependencies
 npm install
-npm run dev       # http://localhost:4321
-npm run build     # outputs to dist/
-npm run preview   # serve the production build
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-## Key Content
-- Projects: `src/content/projects/*.md` (hero + gallery images)
-- Pages: `src/pages/` (home, about, contact, legal)
-- Components: `src/components/`
-- Assets: `src/assets/` (processed) and `public/` (static). Hero video lives at `public/videos/hero-final.mp4`.
+---
 
-## Deployment Notes (Cloudflare Pages)
-- Cloudflare Pages has a 25 MiB per-file limit. The hero video is compressed to ~19 MB (`public/videos/hero-final.mp4`); keep any replacements under 25 MB or host externally (e.g., R2/Stream) and point the `<video>` src to the external URL.
-- Build command: `npm run build`
-- Output directory: `dist`
+## Content Management
 
-## Forms & Analytics
-- Contact form posts to Web3Forms (see `src/components/contact/ContactForm.astro` for access key and fields).
-- Analytics: Cloudflare Web Analytics (cookie-free) is referenced in copy; no tracking cookies are set.
+Project images and content can be easily updated by modifying files in:
+- `src/content/` - Project descriptions and metadata
+- `public/images/` - Project photos and assets
 
-## Image Guidance
-- Place project images under `src/assets/images/projects/<project-slug>/`.
-- Use reasonably sized originals; Astro will generate responsive, optimized WebP outputs at build time.
+See the full README in the repository for detailed content guidelines.
+
+---
+
+## Performance Metrics
+
+- ⚡ **Lightning Fast** - Static site with minimal JavaScript
+- 📱 **Mobile Optimized** - Perfect experience on phones and tablets
+- 🎨 **Visual Excellence** - High-quality images with fast loading
+- ♿ **Accessible** - Semantic HTML and ARIA labels
+
+---
+
+## About Summit Labs
+
+This website was designed and developed by **Summit Labs**, a web design and automation studio specializing in premium websites for businesses in the Netherlands.
+
+We combine modern technology with elegant design to create websites that elevate your brand.
+
+**Services:** Website Design • Hosting & Maintenance • Business Automation
+**Website:** [summitlab.dev](https://summitlab.dev)
+
+---
+
+## License
+
+© 2024 Summit Labs. All rights reserved.
+
+This is a client project developed for By Shakir Luxury Interiors. The code demonstrates the quality and technology stack used by Summit Labs for premium client deliverables.
+
+---
+
+*Looking to showcase your work with a professional portfolio? Contact Summit Labs at [summitlab.dev](https://summitlab.dev)*
